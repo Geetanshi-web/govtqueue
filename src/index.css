@@ -1,0 +1,202 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 217 71% 25%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 43 96% 56%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 71% 25%;
+
+    --radius: 0.5rem;
+
+    /* Status colors */
+    --status-open: 142 76% 36%;
+    --status-closed: 0 84% 60%;
+    --status-lunch: 38 92% 50%;
+    --status-busy: 25 95% 53%;
+
+    /* Semantic colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 11%;
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+
+    /* Government branding */
+    --gov-navy: 217 71% 25%;
+    --gov-navy-light: 217 71% 35%;
+    --gov-gold: 43 96% 56%;
+    --gov-gray: 210 20% 96%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 15%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 15%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 43 96% 56%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217 33% 25%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 20%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 71% 35%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 25%;
+    --input: 217 33% 25%;
+    --ring: 43 96% 56%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Source Sans 3', 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', system-ui, sans-serif;
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .gov-header {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .gov-badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-full;
+  }
+
+  .gov-badge-open {
+    @apply bg-[hsl(var(--status-open))] text-white;
+  }
+
+  .gov-badge-closed {
+    @apply bg-[hsl(var(--status-closed))] text-white;
+  }
+
+  .gov-badge-lunch {
+    @apply bg-[hsl(var(--status-lunch))] text-foreground;
+  }
+
+  .gov-badge-busy {
+    @apply bg-[hsl(var(--status-busy))] text-white;
+  }
+
+  .gov-card {
+    @apply bg-card rounded-lg border shadow-sm transition-all duration-200 hover:shadow-md;
+  }
+
+  .gov-button-primary {
+    @apply bg-primary text-primary-foreground hover:bg-[hsl(var(--gov-navy-light))] transition-colors;
+  }
+
+  .gov-button-accent {
+    @apply bg-accent text-accent-foreground hover:bg-accent/90 font-semibold transition-colors;
+  }
+
+  .gov-input {
+    @apply border-border bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all;
+  }
+
+  .gov-section {
+    @apply py-12 md:py-16;
+  }
+
+  .gov-container {
+    @apply container mx-auto px-4 md:px-6;
+  }
+}
+
+@layer utilities {
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
